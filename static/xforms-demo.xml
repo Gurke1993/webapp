@@ -1,0 +1,131 @@
+<?xml-stylesheet href="xsltforms/xsltforms.xsl" type="text/xsl"?>
+<?css-conversion no?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms">
+  <head>
+    <title>BaseX XForms Demo</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <!-- XForms data models -->
+    <xf:model>
+      <xf:instance>
+        <track xmlns="">
+          <metadata>
+            <title>Like A Rolling Stone</title>
+            <artist>Bob Dylan</artist>
+            <date>1965-06-21</date>
+            <genre>Folk</genre>
+          </metadata>
+        </track>
+      </xf:instance>
+      <xf:bind id="_date" nodeset="//date" type="xs:date"/>
+    </xf:model>
+  </head>
+
+  <body>
+    <div class="right">
+      <img src="basex.svg" width="96" />
+    </div>
+    <h2>BaseX XForms Demo</h2>
+    <ul>
+      <li> In this example, the XForms model is defined in the
+        <code>head</code> section of the XML document.</li>
+      <li> The XForms model consists of an <b>instance</b> and a <b>binding</b>.</li>
+      <li> The instance contains the data, and the binding specifies the type
+        of elements (in this case the <code>date</code> element).</li>
+    </ul>
+
+    <h3>XForm Widgets <small> – coupled to and synchronized with XML Data Model</small></h3>
+    <ul>
+      <li> Whenever you modify data in the edit components, the XML data model will
+        be updated, and all other output and input components will reflect the changes.</li>
+      <li> XForms also cares about type conversion: as the <code>date</code>
+      element is of type <code>xs:date</code>: a date picker is offered.</li>
+    </ul>
+
+    <div>Below, three different views on the XForms model are supplied. Please open the source
+      view of this HTML document to see how the input and output fields are specified.</div>
+    <table width='100%'>
+      <tr>
+        <td width='30%'>
+          <h4>Input Form</h4>
+          <table>
+            <tr>
+              <td>Title:</td>
+              <td><xf:input class="input-medium" ref="/track/metadata/title" incremental="true"/></td>
+            </tr>
+            <tr>
+              <td>Artist:</td>
+              <td><xf:input class="input-medium" ref="//artist" incremental="true"/></td>
+            </tr>
+            <tr>
+              <td>Date:</td>
+              <td><xf:input bind="_date"/></td>
+            </tr>
+            <tr>
+              <td>Genre:</td>
+              <td>
+                <xf:select1 ref="//genre" appearance="minimal" incremental="true">
+                  <xf:item>
+                    <xf:label>Classic Rock</xf:label>
+                    <xf:value>Classic Rock</xf:value>
+                  </xf:item>
+                  <xf:item>
+                    <xf:label>Folk</xf:label>
+                    <xf:value>Folk</xf:value>
+                  </xf:item>
+                  <xf:item>
+                    <xf:label>Metal</xf:label>
+                    <xf:value>Metal</xf:value>
+                  </xf:item>
+                  <xf:item>
+                    <xf:label>Gospel</xf:label>
+                    <xf:value>Gospel</xf:value>
+                  </xf:item>
+                  <xf:item>
+                    <xf:label>Instrumental</xf:label>
+                    <xf:value>Instrumental</xf:value>
+                  </xf:item>
+                  <xf:item>
+                    <xf:label>Soul</xf:label>
+                    <xf:value>Soul</xf:value>
+                  </xf:item>
+                  <xf:item>
+                    <xf:label>Pop</xf:label>
+                    <xf:value>Pop</xf:value>
+                  </xf:item>
+                </xf:select1>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td width='30%'>
+          <h4>Output Form</h4>
+          <table>
+            <tr>
+              <td>Artist:</td>
+              <td><xf:output ref="//artist"/></td>
+            </tr>
+            <tr>
+              <td>Title:</td>
+              <td><xf:output ref="//title"/></td>
+            </tr>
+            <tr>
+              <td>Date:</td>
+              <td><xf:output ref="//date"/></td>
+            </tr>
+            <tr>
+              <td>Genre:</td>
+              <td><xf:output ref="//genre"/></td>
+            </tr>
+          </table>
+        </td>
+        <td width='40%'>
+          <h4>XML Data Model</h4>
+          <pre>
+            <xf:output value="serialize(., 'yes')"/>
+          </pre>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

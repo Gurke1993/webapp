@@ -1,0 +1,38 @@
+<?xml-stylesheet href="xsltforms/xsltforms.xsl" type="text/xsl"?>
+<?css-conversion no?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events">
+  <head>
+    <title>Blackjack Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+  <body>
+    <div class="right">
+      <img src="basex.svg" width="96" />
+    </div>
+    
+      <xf:trigger>
+            <xf:label>Deal</xf:label>
+                         <xf:action ev:event="DOMActivate"> <xf:send submission="deal"/> </xf:action>
+         </xf:trigger>
+         
+           <xf:trigger>
+            <xf:label>Hit</xf:label>
+             <xf:action ev:event="DOMActivate"> <xf:send submission="hit"/> </xf:action>
+         </xf:trigger>
+         
+           <xf:trigger>
+            <xf:label>Stand</xf:label>
+             <xf:action ev:event="DOMActivate"> <xf:send submission="stand"/> </xf:action>
+         </xf:trigger>
+         
+                    <xf:trigger>
+            <xf:label>Double</xf:label>
+             <xf:action ev:event="DOMActivate"> <xf:send submission="double"/> </xf:action>
+         </xf:trigger>
+         
+                    <xf:trigger>
+            <xf:label>Split</xf:label>
+             <xf:action ev:event="DOMActivate"> <xf:send submission="split"/> </xf:action>
+         </xf:trigger>
+  </body>
+</html>
